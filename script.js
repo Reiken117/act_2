@@ -8,15 +8,11 @@ var mapabase = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', 
     attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
 });
 
-var mapabase2 = L.tileLayer('http://{s}.tiles.wmflabs.org/bw-mapnik/{z}/{x}/{y}.png', {
-    maxZoom: 18,
-    attribution: '&copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>'
-});
 
 mapabase.addTo(map);
 
 L.control.scale({ position: 'bottomleft' }).addTo(map);
-var leyenda = L.control.layers({ mapabase, mapabase2 }).addTo(map);
+var leyenda = L.control.layers({ mapabase}).addTo(map);
 
 var icono = L.icon({
     iconSize: [35, 35],
