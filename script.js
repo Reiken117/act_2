@@ -685,7 +685,7 @@ L.easyButton('<img src="iconos/restart.png"  align="absmiddle" height="16px" >',
 }).addTo(map);
 
 
-var marcadoresVisibles = false; // Declarar una variable para rastrear el estado de visibilidad
+var marcadoresVisibles = false;
 
 L.easyButton('<img src="iconos/zoom.png"  align="absmiddle" height="16px" >', function () {
     if (marcadoresVisibles) {
@@ -702,25 +702,16 @@ L.easyButton('<img src="iconos/zoom.png"  align="absmiddle" height="16px" >', fu
 }).addTo(map);
 
 
-L.easyButton('<img src="iconos/colors.png"  align="absmiddle" height="16px" >', function () {
-    var colors = $('#seleccionar_color').val();
-    var color_click = {
-        radius: 7,
-        fillColor: $('#seleccionar_color').val(),
-        color: "black",
-        weight: 1,
-        opacity: 1,
-        fillOpacity: 1,
-    };
-    marcador.setStyle(color_click);
+L.easyButton('<img src="iconos/colors.png" align="absmiddle" height="16px">', function () {
+  var iconUrl = 'iconos/colors.png'; 
+  var icon = L.icon({
+      iconUrl: iconUrl,
+      iconSize: [16, 16] 
+  });
 
-    marcador.on('mouseover', function () {
-        this.setStyle(encima);
-    });
-    marcador.on('mouseout', function () {
-        this.setStyle(color_click);
-    });
+  marcador.setIcon(icon);
 }).addTo(map);
+
 
 L.easyButton('<img src="iconos/heatmap.png"  align="absmiddle" height="16px" >', function () {
   var heatData = [];
@@ -735,6 +726,7 @@ L.easyButton('<img src="iconos/heatmap.png"  align="absmiddle" height="16px" >',
 
 L.control.locate({setView: 'false',flyto: 'false',showCompass: 'true',drawMarker: 'false',keepCurrentZoomLevel: 'true',locateOptions: {enableHighAccuracy: true,}
 }).addTo(map);
+
 
 
 var comunas = L.tileLayer.wms('http://ws-idesc.cali.gov.co:8081/geoserver/wms?service=WMS&version=1.1.0', {
